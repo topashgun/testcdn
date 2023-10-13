@@ -1,3 +1,9 @@
+// utils.js
+const getFullName = (firstname, lastName) => {
+    return `My fullname is ${firstname} ${lastName}`;
+};
+module.exports = getFullName;
+
 export function getSuggestiveSell(cart, suggestions, position, menu){
     console.log(" --------------- getSuggestiveSell ---------------");
     if(!cart?.length || !menu?.length || !suggestions.length)
