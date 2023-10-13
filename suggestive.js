@@ -61,7 +61,7 @@ function validateSuggestion(suggestion){
     return suggestion.filters && suggestion.position && suggestion.result?.fnbItems?.length
 }
 
-function getSuggestiveSell(cart, suggestions, position, menu){
+export function getSuggestiveSell(cart, suggestions, position, menu){
     if(!cart?.length || !menu?.length || !suggestions.length)
         return {}
 
