@@ -1,5 +1,6 @@
 // utils.js
 const getFullName = (firstname, lastName) => {
+    console.log("getFullName");
     return `My fullname is ${firstname} ${lastName}`;
 };
 module.exports = getFullName;
