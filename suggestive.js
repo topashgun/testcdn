@@ -1,3 +1,16 @@
+export function getSuggestiveSell(cart, suggestions, position, menu){
+    if(!cart?.length || !menu?.length || !suggestions.length)
+        return {}
+
+    suggestions = getEligibleSuggestiveSellsByMenu(suggestions, menu)
+    sort(suggestions)
+    let validSuggestion = getValidSuggestionForCart(cart, suggestions, position, menu)
+
+    let items = validSuggestion ? validSuggestion.result.fnbItems : []
+
+    return {cart : cart , position: position, items : items }
+}
+
 function getEligibleSuggestiveSellsByMenu(suggestions, menu){
     let filteredSuggestions = suggestions.filter(suggestion => {
         let validSuggestion = validateSuggestion(suggestion)
@@ -59,19 +72,6 @@ function filterResultItemsBasedOnMenu(filteredSuggestions, menu){
 
 function validateSuggestion(suggestion){
     return suggestion.filters && suggestion.position && suggestion.result?.fnbItems?.length
-}
-
-export function getSuggestiveSell(cart, suggestions, position, menu){
-    if(!cart?.length || !menu?.length || !suggestions.length)
-        return {}
-
-    suggestions = getEligibleSuggestiveSellsByMenu(suggestions, menu)
-    sort(suggestions)
-    let validSuggestion = getValidSuggestionForCart(cart, suggestions, position, menu)
-
-    let items = validSuggestion ? validSuggestion.result.fnbItems : []
-
-    return {cart : cart , position: position, items : items }
 }
 
 function getValidSuggestionForCart(cart, suggestions, position, menu){
